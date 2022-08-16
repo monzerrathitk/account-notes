@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-16-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Account Notes">
+        <lightning-record-edit-form object-api-name="Contact" id="createdContactForm">
+            <lightning-input-field field-name="AccountId" 
+                                    variant="label-hidden" 
+                                    onchange={handleSearch}>
+            </lightning-input-field>
+        </lightning-record-edit-form>
+        <template if:true={notesExist}>
+            <lightning-button onclick={generatePdf} label="Generate PDF"></lightning-button>
+            <c-notes-table notes-list={pageData}></c-notes-table>
+            <lightning-button-group class="slds-align_absolute-center">
+                <lightning-button label="&#x00AB;" onclick={first}></lightning-button>
+                <lightning-button label="&lt;" onclick={previous}></lightning-button>
+                <lightning-button label="&gt;" onclick={next}></lightning-button>
+                <lightning-button label="&#x00BB;" onclick={last}></lightning-button>
+            </lightning-button-group>
+        </template>
+    </lightning-card>
+</template>
